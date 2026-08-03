@@ -71,7 +71,7 @@ function Contact() {
             <p>Connect with me</p>
             <a
               className="contact__social-link"
-              href="https://www.facebook.com/"
+              href="https://www.facebook.com/kerubmarfil.saquisame.54"
               target="_blank"
               rel="noreferrer"
               aria-label="Visit Facebook profile"
