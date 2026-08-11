@@ -1,4 +1,5 @@
 import "./Home.css";
+import cvFile from "../assets/Kerub_M_Saquisame_CV.pdf";
 
 const techStack = [
   {
@@ -143,13 +144,13 @@ function Home() {
               <span>↗</span>
             </a>
 
-            <a
-              href="/CV (1).pdf"
-              download="Kerub_M_Saquisame_CV.pdf"
-              className="btn-secondary"
-            >
-              Download CV
-            </a>
+                  <a
+          href={cvFile}
+          download="Kerub_M_Saquisame_CV.pdf"
+          className="btn-secondary"
+        >
+          Download CV
+        </a>
 
           </div>
 
