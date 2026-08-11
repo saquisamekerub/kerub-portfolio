@@ -226,10 +226,7 @@ function Home() {
             </h2>
           </div>
 
-          <p>
-            Technologies and tools I use to build modern web,
-            mobile, and business applications.
-          </p>
+      
 
         </div>
 
