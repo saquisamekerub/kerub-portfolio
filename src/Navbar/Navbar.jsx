@@ -48,10 +48,7 @@ function Navbar() {
         >
          
 
-          <span className="navbar__brand-text">
-            Kerub M. Saquisame
-          
-          </span>
+         
         </a>
 
         {/* Desktop Navigation */}
