@@ -1,204 +1,415 @@
-import './Home.css';
+import "./Home.css";
+
+const stats = [
+  {
+    number: "4+",
+    label: "Projects",
+  },
+  {
+    number: "1",
+    label: "Internship",
+  },
+  {
+    number: "10+",
+    label: "Certificates",
+  },
+  {
+    number: "2026",
+    label: "Graduate",
+  },
+];
+
+const techStack = [
+  {
+    category: "Programming Languages",
+    technologies: ["JavaScript", "PHP", "Dart"],
+  },
+  {
+    category: "Frontend",
+    technologies: ["React.js", "HTML", "CSS"],
+  },
+  {
+    category: "Mobile & Low-Code",
+    technologies: ["Flutter", "Microsoft Power Apps"],
+  },
+  {
+    category: "CMS & Platforms",
+    technologies: ["WordPress", "SharePoint"],
+  },
+  {
+    category: "Databases",
+    technologies: [
+      "MySQL",
+      "PostgreSQL",
+      "Supabase",
+      "Firestore",
+    ],
+  },
+  {
+    category: "Automation",
+    technologies: ["Power Automate"],
+  },
+  {
+    category: "Tools",
+    technologies: [
+      "Git",
+      "GitHub",
+      "Firebase",
+      "Figma",
+      "VS Code",
+      "Vercel",
+      "Postman",
+      "phpMyAdmin",
+      "Microsoft Power Platform",
+    ],
+  },
+];
 
 const timeline = [
   {
-    type: 'internship',
-    label: 'INTERNSHIP',
-    title: 'Software Developer Intern',
-    org: 'A. Magsaysay, Inc.',
-    period: '2025 — 2026',
+    type: "internship",
+    title: "Software Developer Intern",
+    company: "A. Magsaysay, Inc.",
+    year: "2025 — 2026",
+    description:
+      "Developed enterprise applications, collaborated with cross-functional teams, and improved internal business workflows.",
   },
   {
-    type: 'education',
-    label: 'EDUCATION',
-    title: 'Bachelor of Science in Information Technology',
-    org: 'National University Dasmariñas',
-    detail: 'Specialization: Mobile and Web Applications',
-    period: '2022 — 2026',
+    type: "education",
+    title: "Bachelor of Science in Information Technology",
+    company: "National University Dasmariñas",
+    year: "2022 — 2026",
+    description:
+      "Specialization in Mobile and Web Applications.",
   },
   {
-    type: 'education',
-    label: 'EDUCATION',
-    title: 'Senior High School',
-    org: 'St. Edward School, Lancaster New City',
-    period: '2020 — 2022',
+    type: "education",
+    title: "Senior High School",
+    company: "St. Edward School",
+    year: "2020 — 2022",
+    description:
+      "STEM Strand",
   },
 ];
 
 function Home() {
   return (
-    <main className="home" id="home">
-      <section className="home__hero-wrap">
-        <div className="home__panel">
-          <span className="home__panel-tag">INTRO</span>
+    <main className="home">
 
-          <div className="home__hero">
-            {/* Main Text Content */}
-            <div className="home__hero-copy">
-              <div className="home__status-wrapper">
-                <span className="home__status">Available for work</span>
-              </div>
+      {/* BACKGROUND */}
+      <div className="bg-gradient bg-gradient-1"></div>
+      <div className="bg-gradient bg-gradient-2"></div>
 
-              <div className="home__headline-wrap">
-                <span className="home__spark" aria-hidden="true">
-                  ✦
-                </span>
-                <h1 className="home__title">
-                  <span>Hi, I&apos;m</span>
-                  <span>Kerub M. Saquisame</span>
-                </h1>
-              </div>
+      {/* ==========================================
+          HERO
+      ========================================== */}
 
-              <p className="home__role">
-                Web &amp; Mobile Developer | Software Developer
-              </p>
+      <section className="hero">
 
-              <p className="home__description">
-                Web and mobile developer passionate about creating real-world
-                digital experiences, streamlining business processes, and
-                optimizing workflows. From low-code enterprise platforms to
-                full-stack web solutions, I focus on building scalable,
-                efficient, and user-centered applications.
-              </p>
+        {/* LEFT CONTENT */}
 
-              {/* CTAs */}
-              <div className="home__actions">
-                <a
-                  className="home__button home__button--primary"
-                  href="#works"
-                >
-                  View my Work
-                </a>
-                <a
-                  className="home__button home__button--accent"
-                  href="/CV (1).pdf"
-                  download="Kerub_M_Saquisame_CV.pdf"
-                >
-                  Download Resume
-                </a>
-                <a
-                  className="home__button home__button--secondary"
-                  href="#contact"
-                >
-                  Get in Touch
-                </a>
-              </div>
-            </div>
+        <div className="hero-left">
 
-            {/* Portrait Polaroid */}
-            <div
-              className="home__portrait"
-              aria-label="Polaroid portrait of Kerub M. Saquisame"
+          <span className="status">
+            <span className="status-dot"></span>
+            Available for Work
+          </span>
+
+          <div className="hero-title-wrap">
+
+            <p className="hero-kicker">
+              SOFTWARE DEVELOPER
+            </p>
+
+            <h1>
+              Building{" "}
+              <span>modern web</span>{" "}
+              & mobile experiences.
+            </h1>
+
+          </div>
+
+          {/* MOBILE PROFILE */}
+
+          <div className="profile-card mobile-only">
+            <img
+              src="/img1.jpg"
+              alt="Kerub Saquisame"
+            />
+          </div>
+
+          <p className="hero-description">
+            I'm <strong>Kerub M. Saquisame</strong>, a Software Developer
+            passionate about building modern applications that combine
+            performance, beautiful interfaces, and real-world functionality.
+          </p>
+
+          <div className="hero-buttons">
+
+            <a
+              href="#works"
+              className="btn-primary"
             >
-              <figure className="home__polaroid">
-                <span
-                  className="home__polaroid-tape home__polaroid-tape--left"
-                  aria-hidden="true"
-                />
-                <span
-                  className="home__polaroid-tape home__polaroid-tape--right"
-                  aria-hidden="true"
-                />
-                <img
-                  className="home__portrait-image"
-                  src="/img1.jpg"
-                  alt="Portrait of Kerub M. Saquisame"
-                />
-              </figure>
-            </div>
+              View Projects
+              <span>↗</span>
+            </a>
+
+            <a
+              href="/CV (1).pdf"
+              download="Kerub_M_Saquisame_CV.pdf"
+              className="btn-secondary"
+            >
+              Download CV
+            </a>
+
           </div>
-        </div>
-      </section>
 
-      {/* HIGHLIGHTS SECTION */}
-      <section className="home__content-wrap">
-        <div className="home__panel">
-          <span className="home__panel-tag">HIGHLIGHTS</span>
+          {/* STATS */}
 
-          <div className="home__content">
-            <article id="about" className="home__card">
-              <p className="home__eyebrow">About Me</p>
-              <h2>Creative developer with a visual-first mindset.</h2>
-              <p>
-                I enjoy building interfaces that feel expressive, practical,
-                and polished across both screen sizes and interaction states.
-              </p>
-            </article>
+          <div className="stats">
 
-            <article id="experiences" className="home__card">
-              <p className="home__eyebrow">Experiences</p>
-              <h2>Projects, internship, and collaborative work.</h2>
-              <p>
-                Completed my internship as a Software Developer Intern at
-                A. Magsaysay, Inc., where I gained hands-on experience
-                developing enterprise applications, collaborating with
-                cross-functional teams, and applying modern web and mobile
-                development technologies in real-world business environments.
-              </p>
-            </article>
-
-            <article id="highlighted-works" className="home__card">
-              <p className="home__eyebrow">Works</p>
-              <h2>Selected portfolio pieces with strong visual impact.</h2>
-              <p>
-                Showcase the projects you want visitors to remember first,
-                especially the ones that combine clean engineering with
-                thoughtful presentation.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* JOURNEY / TIMELINE SECTION */}
-      <section className="home__timeline-wrap" id="journey">
-        <div className="home__panel">
-          <span className="home__panel-tag">JOURNEY</span>
-
-          <div className="home__timeline">
-            {timeline.map((item, index) => (
+            {stats.map((item) => (
               <div
-                className="home__timeline-item"
-                key={`${item.org}-${index}`}
+                className="stat-card"
+                key={item.label}
               >
-                <div className="home__timeline-marker">
-                  <span
-                    className={`home__timeline-dot home__timeline-dot--${item.type}`}
-                    aria-hidden="true"
-                  />
-                  {index !== timeline.length - 1 && (
-                    <span
-                      className="home__timeline-line"
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-
-                <div className="home__timeline-card">
-                  <div className="home__timeline-top">
-                    <span
-                      className={`home__timeline-tag home__timeline-tag--${item.type}`}
-                    >
-                      {item.label}
-                    </span>
-                    <span className="home__timeline-period">
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <h3 className="home__timeline-title">{item.title}</h3>
-
-                  <p className="home__timeline-org">{item.org}</p>
-
-                  {item.detail && (
-                    <p className="home__timeline-detail">{item.detail}</p>
-                  )}
-                </div>
+                <h2>{item.number}</h2>
+                <span>{item.label}</span>
               </div>
             ))}
+
           </div>
+
         </div>
+
+        {/* RIGHT PROFILE */}
+
+        <div className="hero-right">
+
+          <div className="profile-wrapper">
+
+            <div className="profile-glow"></div>
+
+            <div className="profile-card desktop-only">
+
+              <img
+                src="/img1.jpg"
+                alt="Kerub Saquisame"
+              />
+
+            </div>
+
+           
+
+          </div>
+
+        </div>
+
       </section>
+
+
+      {/* ==========================================
+          TECH STACK
+      ========================================== */}
+
+      <section className="tech-section">
+
+        <div className="section-header">
+
+          <div>
+            <span className="section-number">
+              01
+            </span>
+
+            <h2>
+              Tech Stack
+            </h2>
+          </div>
+
+          <p>
+            Technologies and tools I use to build modern web,
+            mobile, and business applications.
+          </p>
+
+        </div>
+
+        <div className="tech-grid">
+
+          {techStack.map((stack) => (
+
+            <div
+              className="tech-card"
+              key={stack.category}
+            >
+
+              <h3>
+                {stack.category}
+              </h3>
+
+              <div className="tech-list">
+
+                {stack.technologies.map((tech) => (
+
+                  <span key={tech}>
+                    {tech}
+                  </span>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+
+      {/* ==========================================
+          ABOUT
+      ========================================== */}
+
+      <section className="about-section">
+
+        <div className="section-header simple-header">
+
+          <div>
+            <span className="section-number">
+              02
+            </span>
+
+            <h2>
+              About
+            </h2>
+          </div>
+
+        </div>
+
+        <div className="about-grid">
+
+          <article className="glass-card">
+
+            <span className="card-number">
+              01
+            </span>
+
+            <h2>
+              About Me
+            </h2>
+
+            <p>
+              I build scalable web and mobile applications focused on
+              clean architecture, modern UI, and exceptional user experience.
+            </p>
+
+          </article>
+
+
+          <article className="glass-card">
+
+            <span className="card-number">
+              02
+            </span>
+
+            <h2>
+              Experience
+            </h2>
+
+            <p>
+              Completed my Software Developer Internship at
+              A. Magsaysay Inc., building enterprise applications
+              used in real business environments.
+            </p>
+
+          </article>
+
+
+          <article className="glass-card">
+
+            <span className="card-number">
+              03
+            </span>
+
+            <h2>
+              Portfolio
+            </h2>
+
+            <p>
+              Passionate about designing applications that
+              solve practical problems through technology.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      {/* ==========================================
+          JOURNEY
+      ========================================== */}
+
+      <section className="journey">
+
+        <div className="section-header simple-header">
+
+          <div>
+
+            <span className="section-number">
+              03
+            </span>
+
+            <h2>
+              Journey
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div className="timeline">
+
+          {timeline.map((item) => (
+
+            <div
+              className="timeline-item"
+              key={item.title}
+            >
+
+              <div className="timeline-dot"></div>
+
+              <div className="timeline-content">
+
+                <span className="timeline-year">
+                  {item.year}
+                </span>
+
+                <h3>
+                  {item.title}
+                </h3>
+
+                <h4>
+                  {item.company}
+                </h4>
+
+                <p>
+                  {item.description}
+                </p>
+
+              </div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </section>
+
     </main>
   );
 }

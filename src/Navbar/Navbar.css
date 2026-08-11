@@ -1,191 +1,384 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
 .navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: #1e1f2e;
-  color: #f9fafb;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 20px;
+  left: 28px;
+  right: 28px;
   z-index: 9999;
 }
 
+/* =========================================================
+   CONTAINER
+========================================================= */
+
 .navbar__container {
-  max-width: 1320px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 1.5rem;
+
+  padding: 18px 34px;
+
+  background: rgba(8, 12, 24, 0.72);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, .35),
+    inset 0 1px rgba(255,255,255,.05);
+
+  transition: .35s ease;
 }
 
-/* Brand Logo */
+/* =========================================================
+   BRAND
+========================================================= */
 
-.navbar__brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #7c3aed;
-  text-decoration: none;
-  letter-spacing: 0.04em;
+.navbar__brand{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+text-decoration:none;
+
 }
 
-.navbar__brand-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: 2px solid #7c3aed;
-  border-radius: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 800;
-  background: rgba(124, 58, 237, 0.1);
+.navbar__brand-icon{
+
+width:48px;
+
+height:48px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:16px;
+
+background:linear-gradient(
+135deg,
+#6D28D9,
+#8B5CF6
+);
+
+color:white;
+
+font-size:.95rem;
+
+font-weight:700;
+
+box-shadow:0 15px 35px rgba(124,58,237,.35);
+
+transition:.35s;
+
 }
 
-.navbar__brand-text {
-  color: #ffffff;
-  font-size: 1.05rem;
+.navbar__brand:hover .navbar__brand-icon{
+
+transform:rotate(-6deg) scale(1.08);
+
 }
 
-.navbar__brand-last {
-  display: inline;
+.navbar__brand-text{
+
+font-size:1.25rem;
+
+font-weight:700;
+
+letter-spacing:-.4px;
+
+color:white;
+
 }
 
-/* Toggle Hamburger Button */
+.navbar__brand-dot{
 
-.navbar__toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 0.4rem;
-  cursor: pointer;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3px;
-  width: 36px;
-  height: 36px;
+color:#8B5CF6;
+
 }
 
-.navbar__toggle-bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: #ffffff;
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+/* Brand image (replaces text/icon) */
+.navbar__brand-image{
+  height:72px; /* larger on desktop */
+  width:auto;
+  max-width:360px;
+  object-fit:contain;
+  background:transparent; /* ensure no CSS background */
+  box-shadow:none; /* remove decorative shadow */
+  border-radius:0; /* remove rounding for rectangular logos */
+  transition:transform .35s ease;
+  display:block;
 }
 
-/* Animated "X" when Menu is Opened */
-
-.navbar__toggle--open .navbar__toggle-bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+/* Subtle lift on hover without rotation so wide logos don't jump */
+.navbar__brand:hover .navbar__brand-image{
+  transform:translateY(-3px) scale(1.02);
 }
 
-.navbar__toggle--open .navbar__toggle-bar:nth-child(2) {
-  opacity: 0;
-}
-
-.navbar__toggle--open .navbar__toggle-bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Navigation Links */
-
-.navbar__links {
-  display: flex;
-  align-items: center;
-  gap: 1.75rem;
-}
-
-.navbar__link {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: #d1d5db;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s ease, background 0.2s ease;
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.375rem;
-}
-
-.navbar__link:hover {
-  color: #a78bfa;
-}
-
-.navbar__link-icon {
-  font-size: 1.1rem;
-  color: inherit;
-}
-
-/* Responsive Styles (Mobile & Small Tablets) */
-
-@media (max-width: 720px) {
-  .navbar__container {
-    padding: 0.75rem 1rem;
+@media (max-width:900px){
+  .navbar__brand-image{
+    height:56px; /* smaller on mobile */
+    max-width:260px;
   }
+}
 
-  /* Hide last name on very small screens to maintain breathing room */
-  .navbar__brand-last {
-    display: none;
-  }
+/* =========================================================
+   LINKS
+========================================================= */
 
-  .navbar__toggle {
-    display: flex;
-  }
+.navbar__links{
 
-  .navbar__links {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background: #181924;
-    padding: 0.75rem 1rem 1.25rem;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    gap: 0.4rem;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: max-height 0.35s ease, opacity 0.25s ease;
-  }
+display:flex;
 
-  .navbar__links--open {
-    max-height: 320px;
-    opacity: 1;
-    pointer-events: auto;
-  }
+align-items:center;
 
-  .navbar__link {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
+gap:8px;
 
-  .navbar__link:last-child {
-    border-bottom: none;
-  }
+}
 
-  .navbar__link:active,
-  .navbar__link:hover {
-    background: rgba(124, 58, 237, 0.15);
-    color: #a78bfa;
-  }
+.navbar__link{
 
-  .navbar__link-icon {
-    font-size: 1.25rem;
-  }
+display:flex;
 
-  .navbar__link-text {
-    font-size: 1rem;
-    font-weight: 600;
-  }
+align-items:center;
+
+gap:10px;
+
+padding:12px 20px;
+
+border-radius:14px;
+
+text-decoration:none;
+
+font-size:.95rem;
+
+font-weight:600;
+
+color:#CBD5E1;
+
+position:relative;
+
+overflow:hidden;
+
+transition:.35s;
+
+}
+
+.navbar__link::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:linear-gradient(
+135deg,
+rgba(124,58,237,.18),
+rgba(124,58,237,.05)
+);
+
+opacity:0;
+
+transition:.35s;
+
+}
+
+.navbar__link:hover::before{
+
+opacity:1;
+
+}
+
+.navbar__link:hover{
+
+color:white;
+
+transform:translateY(-2px);
+
+}
+
+.navbar__link span,
+.navbar__link svg{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.navbar__link-icon{
+
+font-size:1rem;
+
+}
+
+/* =========================================================
+   HAMBURGER
+========================================================= */
+
+.navbar__toggle{
+
+display:none;
+
+background:none;
+
+border:none;
+
+cursor:pointer;
+
+}
+
+.navbar__toggle-bar{
+
+display:block;
+
+width:24px;
+
+height:2px;
+
+margin:5px 0;
+
+background:white;
+
+transition:.35s;
+
+}
+
+.navbar__toggle--open
+.navbar__toggle-bar:nth-child(1){
+
+transform:
+translateY(7px)
+rotate(45deg);
+
+}
+
+.navbar__toggle--open
+.navbar__toggle-bar:nth-child(2){
+
+opacity:0;
+
+}
+
+.navbar__toggle--open
+.navbar__toggle-bar:nth-child(3){
+
+transform:
+translateY(-7px)
+rotate(-45deg);
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:900px){
+
+.navbar{
+
+left:14px;
+
+right:14px;
+
+top:14px;
+
+}
+
+.navbar__container{
+
+padding:16px 20px;
+
+}
+
+.navbar__toggle{
+
+display:block;
+
+}
+
+.navbar__links{
+
+position:absolute;
+
+top:calc(100% + 12px);
+
+left:0;
+
+right:0;
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+padding:18px;
+
+background:rgba(8,12,24,.97);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+opacity:0;
+
+pointer-events:none;
+
+transform:translateY(-15px);
+
+transition:.35s;
+
+}
+
+.navbar__links--open{
+
+opacity:1;
+
+pointer-events:auto;
+
+transform:translateY(0);
+
+}
+
+.navbar__link{
+
+width:100%;
+
+justify-content:flex-start;
+
+padding:16px;
+
+}
+
+}
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media(min-width:1700px){
+
+.navbar{
+
+left:50px;
+
+right:50px;
+
+}
+
 }

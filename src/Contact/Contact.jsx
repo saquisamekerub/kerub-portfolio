@@ -1,88 +1,146 @@
-import { FiInfo, FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
-import { FaFacebookF } from 'react-icons/fa';
-import './Contact.css';
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiArrowUpRight,
+} from "react-icons/fi";
 
-const contactItems = [
+import {
+  FaFacebookF,
+} from "react-icons/fa";
+
+import "./Contact.css";
+
+const contacts = [
   {
-    label: 'Email',
-    value: 'saquisamekerubm@gmail.com',
-    href: 'mailto:saquisamekerubm@gmail.com',
-    icon: FiMail,
+    title: "Email",
+    value: "saquisamekerubm@gmail.com",
+    icon: <FiMail />,
+    href: "mailto:saquisamekerubm@gmail.com",
   },
+
   {
-    label: 'Phone',
-    value: '09477804783',
-    href: 'tel:09477804783',
-    icon: FiPhone,
+    title: "Phone",
+    value: "0947 780 4783",
+    icon: <FiPhone />,
+    href: "tel:09477804783",
   },
+
   {
-    label: 'Location',
-    value: 'Imus, Cavite, Philippines',
-    icon: FiMapPin,
+    title: "Location",
+    value: "Imus, Cavite, Philippines",
+    icon: <FiMapPin />,
+  },
+
+  {
+    title: "Facebook",
+    value: "Kerub M. Saquisame",
+    icon: <FaFacebookF />,
+    href: "https://www.facebook.com/kerubmarfil.saquisame.54",
   },
 ];
 
 function Contact() {
+
   return (
-    <section className="contact" id="contact">
-      <div className="contact__inner">
-        <span className="contact__pill">
-          <FiMail />
-          Contact
-        </span>
 
-        <h2 className="contact__title">Get In Touch</h2>
-        <p className="contact__lead">Have a question or want to work together? Let&apos;s connect.</p>
+    <section
+      className="contact"
+      id="contact"
+    >
 
-        <article className="contact__card">
-          <header className="contact__card-header">
-            <FiInfo className="contact__card-title-icon" />
-            <h3>Contact Info</h3>
-          </header>
+      <div className="contact__container">
 
-          <div className="contact__list">
-            {contactItems.map((item) => {
-              const IconComponent = item.icon;
-              const itemBody = (
-                <>
-                  <span className="contact__item-label">{item.label}</span>
-                  <span className="contact__item-value">{item.value}</span>
-                </>
-              );
+        <div className="contact__header">
 
-              return (
-                <div key={item.label} className="contact__item">
-                  <div className="contact__item-icon">
-                    <IconComponent />
-                  </div>
-                  {item.href ? (
-                    <a className="contact__item-content" href={item.href}>
-                      {itemBody}
-                    </a>
-                  ) : (
-                    <div className="contact__item-content">{itemBody}</div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+          <span className="contact__badge">
 
-          <div className="contact__social">
-            <p>Connect with me</p>
+            CONTACT
+
+          </span>
+
+          <h2>
+
+            Get In Touch
+
+          </h2>
+
+          <p>
+
+            I'm always open to discussing new opportunities,
+            collaborating on exciting projects,
+            or simply connecting.
+            Feel free to reach out anytime.
+
+          </p>
+
+        </div>
+
+        <div className="contact__grid">
+
+          {contacts.map((item) => (
+
             <a
-              className="contact__social-link"
-              href="https://www.facebook.com/kerubmarfil.saquisame.54"
-              target="_blank"
+
+              key={item.title}
+
+              href={item.href || "#"}
+
+              className={`contact__card ${
+                !item.href
+                  ? "contact__card--static"
+                  : ""
+              }`}
+
+              target={
+                item.href?.startsWith("http")
+                  ? "_blank"
+                  : undefined
+              }
+
               rel="noreferrer"
-              aria-label="Visit Facebook profile"
+
             >
-              <FaFacebookF />
+
+              <div className="contact__icon">
+
+                {item.icon}
+
+              </div>
+
+              <div className="contact__content">
+
+                <span>
+
+                  {item.title}
+
+                </span>
+
+                <h3>
+
+                  {item.value}
+
+                </h3>
+
+              </div>
+                            {item.href && (
+                <div className="contact__arrow">
+                  <FiArrowUpRight />
+                </div>
+              )}
+
             </a>
-          </div>
-        </article>
+
+          ))}
+
+        </div>
+
       </div>
+
     </section>
+
   );
+
 }
 
 export default Contact;

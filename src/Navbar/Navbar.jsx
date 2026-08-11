@@ -1,66 +1,108 @@
-import { useState } from 'react';
-import { FiHome, FiBriefcase, FiUser, FiMail } from 'react-icons/fi';
-import './Navbar.css';
+import { useState } from "react";
+import {
+  FiHome,
+  FiBriefcase,
+  FiUser,
+  FiMail,
+} from "react-icons/fi";
+import "./Navbar.css";
 
 const navItems = [
-  { label: 'Home', href: '#home', icon: FiHome },
-  { label: 'Projects', href: '#works', icon: FiBriefcase },
-  { label: 'About', href: '#about', icon: FiUser },
-  { label: 'Contact', href: '#contact', icon: FiMail },
+  {
+    label: "Home",
+    href: "#home",
+    icon: FiHome,
+  },
+  {
+    label: "Projects",
+    href: "#works",
+    icon: FiBriefcase,
+  },
+  {
+    label: "About",
+    href: "#about",
+    icon: FiUser,
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+    icon: FiMail,
+  },
 ];
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <header className="navbar">
       <div className="navbar__container">
-        {/* Brand Link */}
+
+        {/* Logo */}
+
         <a
-          className="navbar__brand"
           href="#home"
-          onClick={() => setIsOpen(false)}
+          className="navbar__brand"
+          onClick={closeMenu}
         >
-          <span className="navbar__brand-icon">{'</>'}</span>
+          <div className="navbar__brand-icon">
+            {"</>"}
+          </div>
+
           <span className="navbar__brand-text">
-            Kerub <span className="navbar__brand-last">Saquisame</span>
+            Kerub
+            <span className="navbar__brand-dot">
+              .
+            </span>
           </span>
         </a>
 
-        {/* Mobile Hamburger Toggle Button */}
+        {/* Desktop Navigation */}
+
+        <nav
+          className={`navbar__links ${
+            isOpen ? "navbar__links--open" : ""
+          }`}
+        >
+          {navItems.map((item) => {
+            const Icon = item.icon;
+
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className="navbar__link"
+                onClick={closeMenu}
+              >
+                <Icon className="navbar__link-icon" />
+
+                <span>
+                  {item.label}
+                </span>
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Mobile Toggle */}
+
         <button
-          className={`navbar__toggle ${isOpen ? 'navbar__toggle--open' : ''}`}
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
-          onClick={() => setIsOpen((prev) => !prev)}
+          className={`navbar__toggle ${
+            isOpen
+              ? "navbar__toggle--open"
+              : ""
+          }`}
+          onClick={() =>
+            setIsOpen(!isOpen)
+          }
+          aria-label="Toggle Navigation"
         >
           <span className="navbar__toggle-bar"></span>
           <span className="navbar__toggle-bar"></span>
           <span className="navbar__toggle-bar"></span>
         </button>
 
-        {/* Navigation Menu Links */}
-        <nav
-          className={`navbar__links ${isOpen ? 'navbar__links--open' : ''}`}
-          aria-label="Main navigation"
-        >
-          {navItems.map((item) => {
-            const IconComponent = item.icon;
-
-            return (
-              <a
-                key={item.label}
-                className="navbar__link"
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-              >
-                <IconComponent className="navbar__link-icon" />
-                <span className="navbar__link-text">{item.label}</span>
-              </a>
-            );
-          })}
-        </nav>
       </div>
     </header>
   );

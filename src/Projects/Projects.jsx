@@ -1,174 +1,391 @@
-import { useEffect, useState } from 'react';
-import './Projects.css';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import "./Projects.css";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaArrowRight,
+} from "react-icons/fa";
 
 const projects = [
   {
     id: 1,
-    title: 'Findlink',
-    role: 'FULL-STACK DEVELOPER',
-    description: 'OCR + NLP missing-person case management system for web and mobile.',
-    image: '/findlinkImg.png',
-    actions: [
-      {
-        label: 'Open Site',
-        icon: <FaExternalLinkAlt />,
-        link: 'https://missingperson-345a8.web.app/', // Replace with your deployed URL
-      },
+    featured: true,
+    title: "FindLink",
+    category: "FULL STACK WEB & MOBILE",
+    description:
+      "An OCR + NLP missing-person case management platform designed for both web and mobile. The system streamlines reporting, investigation, and case tracking using Firebase services and modern web technologies.",
+
+    image: "/findlinkImg.png",
+
+    technologies: [
+      "React",
+      "Firebase",
+      "PHP",
+      "MySQL",
+      "OCR",
+      "NLP",
     ],
+
+    github:
+      "https://github.com/saquisamekerub/missingperson-new",
+
+    live:
+      "https://missingperson-345a8.web.app/",
   },
+
   {
     id: 2,
-    title: 'V2 Pet HUB',
-    role: 'MOBILE APP DEVELOPER',
-    description: 'Pet management app that helps owners track and organize pet information.',
-    image: '/V2PetImg.png',
-    imageClassName: 'projects__card-image--contain',
-    actions: [
-      {
-        label: 'GitHub',
-        icon: <FaGithub />,
-        link: 'https://github.com/saquisamekerub/v2Pet', // Replace with your deployed URL
-      },
+
+    featured: false,
+
+    title: "V2 Pet HUB",
+
+    category: "MOBILE APPLICATION",
+
+    description:
+      "A Flutter-based mobile application allowing pet owners to organize records, appointments, health history, and pet information using Supabase.",
+
+    image: "/V2PetImg.png",
+
+    technologies: [
+      "Flutter",
+      "Supabase",
+      "Dart",
+      "Mobile",
     ],
+
+    github:
+      "https://github.com/saquisamekerub/v2Pet",
+
+    live: "",
   },
+
   {
     id: 3,
-    title: 'Portfolio Website',
-    role: 'FRONTEND DEVELOPER',
-    description: 'Personal portfolio with modern layout, responsive sections, and project highlights.',
-    image: '/project3.jpg',
-    actions: [
-      {
-        label: 'GitHub',
-        icon: <FaGithub />,
-        link: 'https://github.com/saquisamekerub/v2Pet', // Replace with your GitHub repo
-      },
+
+    featured: false,
+
+    title: "Portfolio Website",
+
+    category: "FRONTEND DEVELOPMENT",
+
+    description:
+      "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
+
+    image: "/project3.jpg",
+
+    technologies: [
+      "React",
+      "Vite",
+      "CSS",
+      "Responsive",
     ],
+
+    github:
+      "https://github.com/saquisamekerub/kerub-portfolio",
+
+    live: "",
   },
 ];
 
 function Projects() {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [isMobileView, setIsMobileView] = useState(() => window.innerWidth <= 768);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const [mobile, setMobile] = useState(
+    window.innerWidth <= 768
+  );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const media = window.matchMedia("(max-width:768px)");
 
-    const handleViewportChange = (event) => {
-      setIsMobileView(event.matches);
-    };
+    const listener = (e) => setMobile(e.matches);
 
-    setIsMobileView(mediaQuery.matches);
-    mediaQuery.addEventListener('change', handleViewportChange);
+    setMobile(media.matches);
 
-    return () => {
-      mediaQuery.removeEventListener('change', handleViewportChange);
-    };
+    media.addEventListener("change", listener);
+
+    return () =>
+      media.removeEventListener("change", listener);
   }, []);
 
-  const handleShowPrevious = () => {
-    setActiveProjectIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
+  const featured = projects.find(
+    (project) => project.featured
+  );
+
+  const others = projects.filter(
+    (project) => !project.featured
+  );
+
+  const mobileProjects = mobile
+    ? [projects[activeIndex]]
+    : others;
+      const previousProject = () => {
+    setActiveIndex(
+      (prev) => (prev - 1 + projects.length) % projects.length
     );
   };
 
-  const handleShowNext = () => {
-    setActiveProjectIndex(
-      (prevIndex) => (prevIndex + 1) % projects.length
+  const nextProject = () => {
+    setActiveIndex(
+      (prev) => (prev + 1) % projects.length
     );
   };
-
-  const visibleProjects = isMobileView
-    ? [projects[activeProjectIndex]]
-    : projects;
 
   return (
     <section className="projects" id="works">
-      <div className="projects__panel">
-        <span className="projects__domain-tag">PROJECTS</span>
 
-        <div className="projects__header">
-          <h2 className="projects__title">Projects</h2>
+      <div className="projects__container">
 
-          {isMobileView && (
-            <div className="projects__controls">
-              <button
-                type="button"
-                className="projects__control projects__control--active"
-                onClick={handleShowPrevious}
-                aria-label="Show previous project"
-              >
-                ‹
-              </button>
+        <div className="projects__heading">
 
-              <button
-                type="button"
-                className="projects__control"
-                onClick={handleShowNext}
-                aria-label="Show next project"
-              >
-                ›
-              </button>
-            </div>
-          )}
+          <span>Featured Work</span>
+
+          <h2>
+            Selected Projects
+          </h2>
+
+          <p>
+            A collection of applications that showcase my
+            experience in web development, mobile development,
+            enterprise software, and modern UI engineering.
+          </p>
+
         </div>
 
-        <div className="projects__grid">
-          {visibleProjects.map((project) => (
-            <article key={project.id} className="projects__card">
-              <div
-                className={`projects__card-image ${
-                  project.imageClassName ?? ''
-                }`.trim()}
-              >
-                <img src={project.image} alt={project.title} />
+        {/* FEATURED PROJECT */}
+
+        {featured && (
+
+          <article className="featured-project">
+
+            <div className="featured-project__content">
+
+              <span className="featured-project__badge">
+
+                FEATURED PROJECT
+
+              </span>
+
+              <h2>
+
+                {featured.title}
+
+              </h2>
+
+              <p>
+
+                {featured.description}
+
+              </p>
+
+              <div className="featured-project__stack">
+
+                {featured.technologies.map((tech) => (
+
+                  <span key={tech}>
+
+                    {tech}
+
+                  </span>
+
+                ))}
+
               </div>
 
-              <div className="projects__card-content">
-                <h3 className="projects__card-title">{project.title}</h3>
-                <p className="projects__card-role">{project.role}</p>
-                <p className="projects__card-description">
+              <div className="featured-project__buttons">
+
+                <a
+                  href={featured.live}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-btn-primary"
+                >
+
+                  <FaExternalLinkAlt />
+
+                  Live Demo
+
+                </a>
+
+                <a
+                  href={featured.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-btn-secondary"
+                >
+
+                  <FaGithub />
+
+                  GitHub
+
+                </a>
+
+              </div>
+
+            </div>
+
+            <div className="featured-project__image">
+
+              <img
+                src={featured.image}
+                alt={featured.title}
+              />
+
+            </div>
+
+          </article>
+
+        )}
+
+        {/* OTHER PROJECTS */}
+
+        <div className="projects__subheading">
+
+          <h3>
+
+            More Projects
+
+          </h3>
+
+          {mobile && (
+
+            <div className="mobile-controls">
+
+              <button
+                onClick={previousProject}
+              >
+
+                ←
+
+              </button>
+
+              <button
+                onClick={nextProject}
+              >
+
+                →
+
+              </button>
+
+            </div>
+
+          )}
+
+        </div>
+
+        <div className="projects-grid">
+
+          {mobileProjects.map((project) => (
+
+            <article
+              key={project.id}
+              className="project-card"
+            >
+
+              <div className="project-image">
+
+                <img
+                  src={project.image}
+                  alt={project.title}
+                />
+
+              </div>
+
+              <div className="project-body">
+
+                <span>
+
+                  {project.category}
+
+                </span>
+
+                <h3>
+
+                  {project.title}
+
+                </h3>
+
+                <p>
+
                   {project.description}
+
                 </p>
 
-                <div className="projects__card-actions">
-                  {project.actions.map((action) => (
-                    <a
-                      key={action.label}
-                      href={action.link}
-                      className="projects__action-button"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {action.icon}
-                      <span>{action.label}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+                <div className="project-stack">
 
-        {isMobileView && (
-          <div className="projects__pagination">
-            {projects.map((project, index) => (
+                  {project.technologies.map((tech) => (
+
+                    <small key={tech}>
+
+                      {tech}
+
+                    </small>
+
+                  ))}
+
+                </div>
+
+                <div className="project-links">
+
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+
+                    <FaGithub />
+
+                  </a>
+
+                  {project.live && (
+
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+
+                      <FaArrowRight />
+
+                    </a>
+
+                  )}
+
+                </div>
+
+              </div>
+
+            </article>
+
+          ))}
+
+        </div>
+                {mobile && (
+
+          <div className="mobile-pagination">
+
+            {projects.map((_, index) => (
+
               <button
-                key={project.id}
-                type="button"
-                className={`projects__dot ${
-                  index === activeProjectIndex
-                    ? 'projects__dot--active'
-                    : 'projects__dot--inactive'
-                }`}
-                aria-label={`Show ${project.title}`}
-                onClick={() => setActiveProjectIndex(index)}
+                key={index}
+                className={
+                  index === activeIndex
+                    ? "active-dot"
+                    : ""
+                }
+                onClick={() =>
+                  setActiveIndex(index)
+                }
               />
+
             ))}
+
           </div>
+
         )}
+
       </div>
+
     </section>
   );
 }
