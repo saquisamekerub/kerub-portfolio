@@ -46,15 +46,11 @@ function Navbar() {
           className="navbar__brand"
           onClick={closeMenu}
         >
-          <div className="navbar__brand-icon">
-            {"</>"}
-          </div>
+         
 
           <span className="navbar__brand-text">
-            Kerub
-            <span className="navbar__brand-dot">
-              .
-            </span>
+            Kerub M. Saquisame
+          
           </span>
         </a>
 
