@@ -1,24 +1,5 @@
 import "./Home.css";
 
-const stats = [
-  {
-    number: "4+",
-    label: "Projects",
-  },
-  {
-    number: "1",
-    label: "Internship",
-  },
-  {
-    number: "10+",
-    label: "Certificates",
-  },
-  {
-    number: "2026",
-    label: "Graduate",
-  },
-];
-
 const techStack = [
   {
     category: "Programming Languages",
@@ -96,9 +77,13 @@ function Home() {
   return (
     <main className="home">
 
-      {/* BACKGROUND */}
+      {/* ==========================================
+          BACKGROUND
+      ========================================== */}
+
       <div className="bg-gradient bg-gradient-1"></div>
       <div className="bg-gradient bg-gradient-2"></div>
+
 
       {/* ==========================================
           HERO
@@ -115,6 +100,7 @@ function Home() {
             Available for Work
           </span>
 
+
           <div className="hero-title-wrap">
 
             <p className="hero-kicker">
@@ -129,6 +115,7 @@ function Home() {
 
           </div>
 
+
           {/* MOBILE PROFILE */}
 
           <div className="profile-card mobile-only">
@@ -138,11 +125,13 @@ function Home() {
             />
           </div>
 
+
           <p className="hero-description">
             I'm <strong>Kerub M. Saquisame</strong>, a Software Developer
             passionate about building modern applications that combine
             performance, beautiful interfaces, and real-world functionality.
           </p>
+
 
           <div className="hero-buttons">
 
@@ -164,23 +153,8 @@ function Home() {
 
           </div>
 
-          {/* STATS */}
-
-          <div className="stats">
-
-            {stats.map((item) => (
-              <div
-                className="stat-card"
-                key={item.label}
-              >
-                <h2>{item.number}</h2>
-                <span>{item.label}</span>
-              </div>
-            ))}
-
-          </div>
-
         </div>
+
 
         {/* RIGHT PROFILE */}
 
@@ -191,15 +165,11 @@ function Home() {
             <div className="profile-glow"></div>
 
             <div className="profile-card desktop-only">
-
               <img
                 src="/img1.jpg"
                 alt="Kerub Saquisame"
               />
-
             </div>
-
-           
 
           </div>
 
@@ -217,6 +187,7 @@ function Home() {
         <div className="section-header">
 
           <div>
+
             <span className="section-number">
               01
             </span>
@@ -224,11 +195,11 @@ function Home() {
             <h2>
               Tech Stack
             </h2>
+
           </div>
 
-      
-
         </div>
+
 
         <div className="tech-grid">
 
@@ -273,6 +244,7 @@ function Home() {
         <div className="section-header simple-header">
 
           <div>
+
             <span className="section-number">
               02
             </span>
@@ -280,9 +252,11 @@ function Home() {
             <h2>
               About
             </h2>
+
           </div>
 
         </div>
+
 
         <div className="about-grid">
 
