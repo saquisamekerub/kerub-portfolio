@@ -290,8 +290,8 @@ rotate(-45deg);
   .navbar {
     left: 14px;
     right: 14px;
-    top: auto;
-    bottom: 12px;
+    top: 12px;
+    bottom: auto;
   }
 
   .navbar__container {
@@ -299,7 +299,7 @@ rotate(-45deg);
   }
 
   /* On mobile hide the desktop brand and remove container chrome
-     so the fixed bottom `.navbar__links` appears as the single bar */
+     so the fixed top `.navbar__links` appears as the single bar */
   .navbar__brand {
     display: none;
   }
@@ -319,8 +319,8 @@ rotate(-45deg);
     position: fixed;
     left: 16px;
     right: 16px;
-    bottom: 14px;
-    top: auto;
+    top: 14px;
+    bottom: auto;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
