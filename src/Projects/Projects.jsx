@@ -38,14 +38,14 @@ const projects = [
 
     featured: false,
 
-    title: "V2 Pet HUB",
+    title: "",
 
     category: "MOBILE APPLICATION",
 
     description:
-      "A Flutter-based mobile application allowing pet owners to organize records, appointments, health history, and pet information using Supabase.",
+      "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
 
-    image: "/V2PetImg.png",
+    image: "",
 
     technologies: [
       "Flutter",
@@ -65,14 +65,14 @@ const projects = [
 
     featured: false,
 
-    title: "Portfolio Website",
+    title: "",
 
     category: "FRONTEND DEVELOPMENT",
 
     description:
       "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
 
-    image: "/project3.jpg",
+    image: "",
 
     technologies: [
       "React",

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./Home.css";
 import cvFile from "../assets/Kerub_M_Saquisame_CV.pdf";
 
@@ -75,8 +76,59 @@ const timeline = [
 ];
 
 function Home() {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      const progress =
+        documentHeight > 0
+          ? (scrollTop / documentHeight) * 100
+          : 0;
+
+      setScrollProgress(progress);
+      setShowBackToTop(scrollTop > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main className="home">
+
+      {/* ==========================================
+          SCROLL PROGRESS INDICATOR
+      ========================================== */}
+
+      <div
+        className="scroll-progress"
+        aria-hidden="true"
+      >
+        <div
+          className="scroll-progress-bar"
+          style={{
+            width: `${scrollProgress}%`,
+          }}
+        ></div>
+      </div>
+
 
       {/* ==========================================
           BACKGROUND
@@ -144,13 +196,14 @@ function Home() {
               <span>↗</span>
             </a>
 
-                  <a
-          href={cvFile}
-          download="Kerub_M_Saquisame_CV.pdf"
-          className="btn-secondary"
-        >
-          Download CV
-        </a>
+
+            <a
+              href={cvFile}
+              download="Kerub_M_Saquisame_CV.pdf"
+              className="btn-secondary"
+            >
+              Download CV
+            </a>
 
           </div>
 
@@ -381,6 +434,22 @@ function Home() {
         </div>
 
       </section>
+
+
+      {/* ==========================================
+          BACK TO TOP
+      ========================================== */}
+
+      {showBackToTop && (
+        <button
+          className="back-to-top"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+          title="Back to top"
+        >
+          ↑
+        </button>
+      )}
 
     </main>
   );
