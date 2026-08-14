@@ -20,7 +20,7 @@ const navItems = [
   },
   {
     label: "About",
-    href: "#about",
+    href: "#journey",
     icon: FiUser,
   },
   {

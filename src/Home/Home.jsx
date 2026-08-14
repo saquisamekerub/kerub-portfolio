@@ -111,7 +111,7 @@ function Home() {
   };
 
   return (
-    <main className="home">
+    <main id="home" className="home">
 
       {/* ==========================================
           SCROLL PROGRESS INDICATOR
@@ -373,11 +373,11 @@ function Home() {
       </section>
 
 
-      {/* ==========================================
+        {/* ==========================================
           JOURNEY
-      ========================================== */}
+        ========================================== */}
 
-      <section className="journey">
+        <section id="journey" className="journey">
 
         <div className="section-header simple-header">
 
