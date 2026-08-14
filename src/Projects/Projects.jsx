@@ -112,22 +112,32 @@ function Projects() {
     (project) => project.featured
   );
 
-  const others = projects.filter(
+  const otherProjects = projects.filter(
     (project) => !project.featured
   );
 
+  const totalOtherProjects = otherProjects.length;
+
   const mobileProjects = mobile
-    ? [projects[activeIndex]]
-    : others;
-      const previousProject = () => {
+    ? totalOtherProjects
+      ? [otherProjects[activeIndex % totalOtherProjects]]
+      : []
+    : otherProjects;
+
+  const previousProject = () => {
+    if (!totalOtherProjects) return;
+
     setActiveIndex(
-      (prev) => (prev - 1 + projects.length) % projects.length
+      (prev) =>
+        (prev - 1 + totalOtherProjects) % totalOtherProjects
     );
   };
 
   const nextProject = () => {
+    if (!totalOtherProjects) return;
+
     setActiveIndex(
-      (prev) => (prev + 1) % projects.length
+      (prev) => (prev + 1) % totalOtherProjects
     );
   };
 
@@ -360,11 +370,11 @@ function Projects() {
           ))}
 
         </div>
-                {mobile && (
+                {mobile && totalOtherProjects > 0 && (
 
           <div className="mobile-pagination">
 
-            {projects.map((_, index) => (
+            {otherProjects.map((_, index) => (
 
               <button
                 key={index}
