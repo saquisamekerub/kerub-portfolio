@@ -4,6 +4,7 @@ import {
   FaGithub,
   FaExternalLinkAlt,
   FaArrowRight,
+  FaImage,
 } from "react-icons/fa";
 
 const projects = [
@@ -23,7 +24,9 @@ const projects = [
       "PHP",
       "MySQL",
       "OCR",
-      "NLP",
+      "Regex",
+      "Google Maps",
+      "Jitsi Meet",
     ],
 
     github:
@@ -38,24 +41,33 @@ const projects = [
 
     featured: false,
 
-    title: "",
+    title: "INNOVEAT",
 
-    category: "MOBILE APPLICATION",
+    category: "WEBSITE APPLICATION",
 
     description:
-      "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
+      "Innovative food catering and party requirements supplying company that focuses its services in providing culinary experiences in various events.",
 
-    image: "",
+    image: "/cater.jpg",
+
+    galleryImages: [
+      "/cater.jpg",
+      "/cater1.jpg",
+      "/cater2.jpg",
+      "/cater3.jpg",
+      "/cater4.jpg",
+      "/cater5.jpg",
+    ],
 
     technologies: [
-      "Flutter",
-      "Supabase",
-      "Dart",
-      "Mobile",
+      "React",
+      "PHP",
+      "MySQL",
+  
     ],
 
     github:
-      "https://github.com/saquisamekerub/v2Pet",
+      "https://github.com/saquisamekerub/CATERING",
 
     live: "",
   },
@@ -90,20 +102,18 @@ const projects = [
 
 function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const [mobile, setMobile] = useState(
     window.innerWidth <= 768
   );
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryProjectId, setGalleryProjectId] = useState(null);
+  const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width:768px)");
-
     const listener = (e) => setMobile(e.matches);
-
     setMobile(media.matches);
-
     media.addEventListener("change", listener);
-
     return () =>
       media.removeEventListener("change", listener);
   }, []);
@@ -126,7 +136,6 @@ function Projects() {
 
   const previousProject = () => {
     if (!totalOtherProjects) return;
-
     setActiveIndex(
       (prev) =>
         (prev - 1 + totalOtherProjects) % totalOtherProjects
@@ -135,11 +144,36 @@ function Projects() {
 
   const nextProject = () => {
     if (!totalOtherProjects) return;
-
     setActiveIndex(
       (prev) => (prev + 1) % totalOtherProjects
     );
   };
+
+  const openGallery = (projectId) => {
+    setGalleryProjectId(projectId);
+    setImageIndex(0);
+    setGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setGalleryOpen(false);
+    setGalleryProjectId(null);
+    setImageIndex(0);
+  };
+
+  const previousImage = () => {
+    const galleryProject = projects.find(p => p.id === galleryProjectId);
+    const images = galleryProject?.galleryImages || [galleryProject?.image];
+    setImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const nextImage = () => {
+    const galleryProject = projects.find(p => p.id === galleryProjectId);
+    const images = galleryProject?.galleryImages || [galleryProject?.image];
+    setImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const galleryProject = projects.find(p => p.id === galleryProjectId);
 
   return (
     <section className="projects" id="works">
@@ -361,6 +395,16 @@ function Projects() {
 
                   )}
 
+                  <button
+                    className="gallery-btn"
+                    onClick={() => openGallery(project.id)}
+                    title="View Gallery"
+                  >
+
+                    <FaImage />
+
+                  </button>
+
                 </div>
 
               </div>
@@ -370,7 +414,8 @@ function Projects() {
           ))}
 
         </div>
-                {mobile && totalOtherProjects > 0 && (
+
+        {mobile && totalOtherProjects > 0 && (
 
           <div className="mobile-pagination">
 
@@ -394,7 +439,93 @@ function Projects() {
 
         )}
 
-      </div>
+        {/* GALLERY MODAL */}
+        {galleryOpen && galleryProject && (
+          <div className="gallery-modal" onClick={closeGallery}>
+            <div className="gallery-modal__content" onClick={(e) => e.stopPropagation()}>
+              <button className="gallery-modal__close" onClick={closeGallery}>
+                ✕
+              </button>
+              
+              <div className="gallery-modal__image-container">
+                <img
+                  src={galleryProject.galleryImages ? galleryProject.galleryImages[imageIndex] : galleryProject.image}
+                  alt={`${galleryProject.title} ${imageIndex + 1}`}
+                  className="gallery-modal__image"
+                />
+                
+                {galleryProject.galleryImages && galleryProject.galleryImages.length > 1 && (
+                  <>
+                    <button 
+                      className="gallery-modal__nav gallery-modal__nav--prev"
+                      onClick={previousImage}
+                      title="Previous image"
+                    >
+                      ‹
+                    </button>
+                    <button 
+                      className="gallery-modal__nav gallery-modal__nav--next"
+                      onClick={nextImage}
+                      title="Next image"
+                    >
+                      ›
+                    </button>
+                    
+                    <div className="gallery-modal__indicators">
+                      {galleryProject.galleryImages.map((_, idx) => (
+                        <button
+                          key={idx}
+                          className={`gallery-modal__dot ${idx === imageIndex ? "active" : ""}`}
+                          onClick={() => setImageIndex(idx)}
+                          title={`Image ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              <div className="gallery-modal__info">
+                <h2>{galleryProject.title}</h2>
+                <p className="gallery-modal__category">
+                  {galleryProject.category}
+                </p>
+                <p className="gallery-modal__description">
+                  {galleryProject.description}
+                </p>
+                <div className="gallery-modal__stack">
+                  {galleryProject.technologies.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+                <div className="gallery-modal__buttons">
+                  {galleryProject.live && (
+                    <a
+                      href={galleryProject.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="modal-btn-primary"
+                    >
+                      <FaExternalLinkAlt />
+                      Live Demo
+                    </a>
+                  )}
+                  <a
+                    href={galleryProject.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="modal-btn-secondary"
+                  >
+                    <FaGithub />
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        </div>
 
     </section>
   );

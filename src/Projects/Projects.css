@@ -358,7 +358,7 @@
 
 }
 /* ===================================================
-   PROJECT GRID
+   PROJECTS GRID
 =================================================== */
 
 .projects-grid{
@@ -553,7 +553,8 @@
 
 }
 
-.project-links a{
+.project-links a,
+.project-links button{
 
     width:52px;
 
@@ -579,13 +580,22 @@
 
     font-size:1rem;
 
+    cursor:pointer;
+
 }
 
-.project-links a:hover{
+.project-links a:hover,
+.project-links button:hover{
 
     background:#7C3AED;
 
     transform:translateY(-5px);
+
+}
+
+.gallery-btn{
+
+    padding:0;
 
 }
 
@@ -634,8 +644,419 @@
 }
 
 /* ===================================================
-   RESPONSIVE
+   GALLERY MODAL
 =================================================== */
+
+.gallery-modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:rgba(0,0,0,.9);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+    backdrop-filter:blur(5px);
+
+    animation:fadeIn .3s ease-in;
+
+    padding:80px 20px 20px;
+
+    overflow-y:auto;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+.gallery-modal__content{
+
+    background:#070B16;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    max-width:700px;
+
+    width:100%;
+
+    max-height:calc(100vh - 120px);
+
+    overflow-y:auto;
+
+    position:relative;
+
+    animation:slideUp .35s ease-out;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        transform:translateY(50px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+.gallery-modal__close{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    width:36px;
+
+    height:36px;
+
+    border:none;
+
+    background:rgba(255,255,255,.1);
+
+    color:white;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:1.3rem;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.35s;
+
+    z-index:10;
+
+}
+
+.gallery-modal__close:hover{
+
+    background:#7C3AED;
+
+    transform:rotate(90deg);
+
+}
+
+.gallery-modal__image{
+
+    width:100%;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    max-height:300px;
+
+    object-fit:cover;
+
+}
+
+/* ===================================================
+   IMAGE CONTAINER & NAVIGATION
+=================================================== */
+
+.gallery-modal__image-container{
+
+    position:relative;
+
+    margin-bottom:30px;
+
+}
+
+.gallery-modal__nav{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:50px;
+
+    height:50px;
+
+    background:rgba(124,58,237,.8);
+
+    border:none;
+
+    border-radius:50%;
+
+    color:white;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.35s;
+
+    z-index:10;
+
+}
+
+.gallery-modal__nav:hover{
+
+    background:#7C3AED;
+
+    transform:translateY(-50%) scale(1.1);
+
+}
+
+.gallery-modal__nav--prev{
+
+    left:15px;
+
+}
+
+.gallery-modal__nav--next{
+
+    right:15px;
+
+}
+
+.gallery-modal__indicators{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:15px;
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:rgba(0,0,0,.6);
+
+    padding:8px 12px;
+
+    border-radius:20px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.gallery-modal__dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(255,255,255,.5);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.gallery-modal__dot.active{
+
+    background:#7C3AED;
+
+    width:28px;
+
+    border-radius:10px;
+
+}
+
+.gallery-modal__info{
+
+    color:white;
+
+}
+
+.gallery-modal__info h2{
+
+    font-size:2.4rem;
+
+    margin-bottom:10px;
+
+}
+
+.gallery-modal__category{
+
+    color:#7C3AED;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.gallery-modal__description{
+
+    color:#94A3B8;
+
+    line-height:1.6;
+
+    margin-bottom:18px;
+
+    font-size:0.95rem;
+
+}
+
+.gallery-modal__stack{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.gallery-modal__stack span{
+
+    padding:8px 14px;
+
+    border-radius:100px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    font-size:.8rem;
+
+}
+
+.gallery-modal__buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.modal-btn-primary,
+.modal-btn-secondary{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    text-decoration:none;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    transition:.35s;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    font-size:.9rem;
+
+}
+
+.modal-btn-primary{
+
+    background:#7C3AED;
+
+    color:white;
+
+}
+
+.modal-btn-primary:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 18px 35px rgba(124,58,237,.45);
+
+}
+
+.modal-btn-secondary{
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:white;
+
+    background:rgba(255,255,255,.04);
+
+}
+
+.modal-btn-secondary:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
 
 @media(max-width:1200px){
 
@@ -709,6 +1130,12 @@ justify-content:center;
 
 }
 
+.projects-grid{
+
+grid-template-columns:1fr;
+
+}
+
 .project-image{
 
 height:220px;
@@ -740,6 +1167,97 @@ gap:20px;
 .mobile-controls{
 
 align-self:flex-end;
+
+}
+
+.gallery-modal__content{
+
+padding:20px;
+
+width:100%;
+
+border-radius:20px;
+
+max-height:calc(100vh - 100px);
+
+}
+
+.gallery-modal__image{
+
+max-height:250px;
+
+margin-bottom:16px;
+
+}
+
+.gallery-modal__nav{
+
+    width:36px;
+
+    height:36px;
+
+    font-size:1.3rem;
+
+}
+
+.gallery-modal__nav--prev{
+
+    left:6px;
+
+}
+
+.gallery-modal__nav--next{
+
+    right:6px;
+
+}
+
+.gallery-modal__indicators{
+
+    padding:5px 8px;
+
+}
+
+.gallery-modal__dot{
+
+    width:7px;
+
+    height:7px;
+
+}
+
+.gallery-modal__dot.active{
+
+    width:20px;
+
+}
+
+.gallery-modal__info h2{
+
+    font-size:1.8rem;
+
+}
+
+.gallery-modal__buttons{
+
+    flex-direction:column;
+
+}
+
+.modal-btn-primary,
+.modal-btn-secondary{
+
+width:100%;
+
+justify-content:center;
+
+padding:10px 16px;
+
+}
+
+.gallery-modal{
+
+    padding:70px 12px 12px;
 
 }
 

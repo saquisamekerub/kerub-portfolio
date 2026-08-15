@@ -15,7 +15,7 @@ const achievements = [
   },
 
   {
-    year: "2026",
+    year: "2025",
     title: "Dean's Lister",
     description:
       "Recognized as a Dean's Lister for outstanding academic performance across multiple semesters.",
