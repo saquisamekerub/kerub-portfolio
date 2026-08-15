@@ -151,7 +151,7 @@ function Projects() {
           <span>Featured Work</span>
 
           <h2>
-            Selected Projects
+            My Projects
           </h2>
 
           <p>

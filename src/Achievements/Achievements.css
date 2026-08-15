@@ -1,0 +1,721 @@
+/* =========================================================
+   ACHIEVEMENTS SECTION
+========================================================= */
+
+.achievements-section {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 110px auto 0;
+}
+
+
+/* =========================================================
+   ACHIEVEMENTS GRID
+========================================================= */
+
+.achievements-grid {
+  display: grid;
+
+  /*
+    Two equal cards.
+    The grid is centered so it doesn't leave
+    a huge empty area on the right.
+  */
+  grid-template-columns:
+    repeat(2, minmax(0, 400px));
+
+  justify-content: center;
+
+  gap: 26px;
+
+  /* CHANGED: was "start" — stretch makes every card in the
+     row match the height of the tallest card, so the row
+     stays level even when one card has an extra button. */
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT CARD
+========================================================= */
+
+.achievement-card {
+  position: relative;
+
+  width: 100%;
+
+  /* CHANGED: fill the stretched grid cell, then lay out
+     children top-to-bottom so we can pin content to the
+     bottom of the card when needed. */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(124, 58, 237, 0.4);
+}
+
+
+/* =========================================================
+   IMAGE BUTTON
+========================================================= */
+
+.achievement-image-button {
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT IMAGE CONTAINER
+========================================================= */
+
+/*
+  IMPORTANT:
+  No fixed height here.
+
+  The image itself determines the height,
+  so there is no unnecessary empty space.
+*/
+
+.achievement-image {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  display: block;
+
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  line-height: 0;
+}
+
+
+/* =========================================================
+   CERTIFICATE IMAGE
+========================================================= */
+
+.achievement-image img {
+  display: block;
+
+  width: 100%;
+
+  /*
+    Auto height preserves the original
+    aspect ratio of your certificate.
+  */
+  height: auto;
+
+  object-fit: contain;
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+========================================================= */
+
+.achievement-image-button:hover
+.achievement-image img {
+  transform: scale(1.02);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.achievement-placeholder {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 180px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   PLACEHOLDER ICON
+========================================================= */
+
+.placeholder-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  margin-bottom: 10px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(124, 58, 237, 0.12);
+
+  color: #a78bfa;
+
+  font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   PLACEHOLDER CATEGORY
+========================================================= */
+
+.achievement-placeholder > span {
+  color: #64748b;
+
+  font-size: 0.6rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CARD INFORMATION
+========================================================= */
+
+.achievement-info {
+  padding:
+    15px
+    18px
+    18px;
+
+  /* CHANGED: let this section grow to fill any leftover
+     height in the card, and lay its children out in a
+     column so the details block can grow too. */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.achievement-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  margin-bottom: 11px;
+}
+
+.achievement-category {
+  color: #a78bfa;
+
+  font-size: 0.55rem;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+.achievement-year {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #64748b;
+
+  font-size: 0.6rem;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.achievement-details {
+  /* CHANGED: grow to fill remaining space so the
+     publication button (if present) can be pushed
+     to the bottom of the card with margin-top: auto. */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.achievement-details h3 {
+  margin:
+    0
+    0
+    8px;
+
+  color: #ffffff;
+
+  font-size: 1rem;
+
+  line-height: 1.35;
+
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.achievement-details p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 0.68rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   PUBLICATION BUTTON
+========================================================= */
+
+.achievement-publication-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  /* CHANGED: was a fixed 14px — margin-top: auto pushes
+     this button to the bottom of the flex column, so it
+     always sits flush with the card's bottom edge and
+     lines up with cards that don't have a button. */
+  margin-top: auto;
+
+  padding:
+    8px
+    13px;
+
+  border:
+    1px solid rgba(124, 58, 237, 0.35);
+
+  border-radius: 8px;
+
+  background:
+    rgba(124, 58, 237, 0.08);
+
+  color: #a78bfa;
+
+  font-size: 0.65rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.achievement-publication-button span {
+  font-size: 0.8rem;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.achievement-publication-button:hover {
+  background:
+    rgba(124, 58, 237, 0.16);
+
+  border-color:
+    rgba(124, 58, 237, 0.55);
+
+  transform: translateY(-2px);
+}
+
+.achievement-publication-button:hover span {
+  transform:
+    translate(2px, -2px);
+}
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+.achievement-lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background:
+    rgba(0, 0, 0, 0.94);
+
+  animation:
+    lightboxFadeIn 0.2s ease;
+}
+
+
+/* =========================================================
+   LIGHTBOX CONTENT
+========================================================= */
+
+.achievement-lightbox-content {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+
+/* =========================================================
+   LIGHTBOX IMAGE
+========================================================= */
+
+.achievement-lightbox-image {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 90vw;
+  max-height: 88vh;
+
+  object-fit: contain;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.5);
+
+  animation:
+    lightboxImageIn 0.25s ease;
+}
+
+
+/* =========================================================
+   LIGHTBOX CLOSE
+========================================================= */
+
+.achievement-lightbox-close {
+  position: fixed;
+
+  top: 28px;
+  right: 32px;
+
+  z-index: 10000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 2.2rem;
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.achievement-lightbox-close:hover {
+  transform: scale(1.1);
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   LIGHTBOX ANIMATIONS
+========================================================= */
+
+@keyframes lightboxFadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+@keyframes lightboxImageIn {
+
+  from {
+    opacity: 0;
+
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .achievements-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .achievements-section {
+    width: 100%;
+
+    /* CHANGED: less dead space above the section on small
+       screens, and side padding so cards never touch the
+       edge of the viewport. */
+    margin-top: 60px;
+
+    padding: 0 16px;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+
+    justify-content: stretch;
+
+    /* CHANGED: tighter gap so cards feel like one compact
+       stack instead of a long, spaced-out list. */
+    gap: 14px;
+  }
+
+  .achievement-card {
+    /* CHANGED: smaller radius reads better at narrow widths. */
+    border-radius: 14px;
+  }
+
+  /* CHANGED: match the web view — let the image keep its
+     natural aspect ratio (auto height, contain) instead of
+     forcing a fixed height, which was cropping the top/
+     bottom off the certificates. */
+  .achievement-image img {
+    object-fit: contain;
+  }
+
+  .achievement-placeholder {
+    min-height: 130px;
+  }
+
+  .achievement-info {
+    padding:
+      12px
+      14px
+      14px;
+  }
+
+  .achievement-top {
+    margin-bottom: 7px;
+  }
+
+  .achievement-category {
+    font-size: 0.5rem;
+  }
+
+  .achievement-year {
+    margin-bottom: 4px;
+
+    font-size: 0.56rem;
+  }
+
+  .achievement-details h3 {
+    /* CHANGED: smaller, tighter heading so titles wrap to
+       fewer lines and don't dominate the card. */
+    margin-bottom: 5px;
+
+    font-size: 0.85rem;
+
+    line-height: 1.25;
+  }
+
+  .achievement-details p {
+    font-size: 0.62rem;
+
+    line-height: 1.45;
+  }
+
+  .achievement-publication-button {
+    margin-top: 10px;
+
+    padding: 7px 11px;
+
+    font-size: 0.6rem;
+  }
+
+  .achievement-lightbox {
+    padding: 20px;
+  }
+
+  .achievement-lightbox-image {
+    max-width: 94vw;
+
+    max-height: 85vh;
+
+    border-radius: 7px;
+  }
+
+  .achievement-lightbox-close {
+    top: 15px;
+
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 2rem;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .achievements-section {
+    padding: 0 12px;
+  }
+
+  .achievement-details h3 {
+    font-size: 0.82rem;
+  }
+
+  .achievement-details p {
+    font-size: 0.6rem;
+  }
+
+  .achievement-publication-button {
+    font-size: 0.58rem;
+
+    padding:
+      6px
+      10px;
+  }
+
+}

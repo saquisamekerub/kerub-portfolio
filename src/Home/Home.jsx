@@ -70,8 +70,6 @@ const timeline = [
     title: "Senior High School",
     company: "St. Edward School",
     year: "2020 — 2022",
-    description:
-      "STEM Strand",
   },
 ];
 
@@ -314,6 +312,8 @@ function Home() {
 
         <div className="about-grid">
 
+          {/* ABOUT ME */}
+
           <article className="glass-card">
 
             <span className="card-number">
@@ -331,6 +331,8 @@ function Home() {
 
           </article>
 
+
+          {/* EXPERIENCE */}
 
           <article className="glass-card">
 
@@ -351,6 +353,8 @@ function Home() {
           </article>
 
 
+          {/* PORTFOLIO */}
+
           <article className="glass-card">
 
             <span className="card-number">
@@ -368,16 +372,35 @@ function Home() {
 
           </article>
 
+
+          {/* ACHIEVEMENTS */}
+
+          <article className="glass-card">
+
+            <span className="card-number">
+              04
+            </span>
+
+            <h2>
+              Achievements
+            </h2>
+
+            <p>
+              BSIT graduate specializing in Mobile and Web Applications, with Dean’s List recognition and additional industry certifications and training.
+            </p>
+
+          </article>
+
         </div>
 
       </section>
 
 
-        {/* ==========================================
+      {/* ==========================================
           JOURNEY
-        ========================================== */}
+      ========================================== */}
 
-        <section id="journey" className="journey">
+      <section id="journey" className="journey">
 
         <div className="section-header simple-header">
 
@@ -421,9 +444,11 @@ function Home() {
                   {item.company}
                 </h4>
 
-                <p>
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p>
+                    {item.description}
+                  </p>
+                )}
 
               </div>
 
