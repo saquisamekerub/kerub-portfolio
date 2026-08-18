@@ -155,7 +155,7 @@ function Home() {
           <div className="hero-title-wrap">
 
             <p className="hero-kicker">
-              SOFTWARE DEVELOPER
+              SOFTWARE DEVELOPER | QA / MANUAL TESTING
             </p>
 
             <h1>
@@ -180,7 +180,7 @@ function Home() {
           <p className="hero-description">
             I'm <strong>Kerub M. Saquisame</strong>, a Software Developer
             passionate about building modern applications that combine
-            performance, beautiful interfaces, and real-world functionality.
+            performance, beautiful interfaces, and real-world functionality — backed by hands-on QA and manual testing practice to ensure what I build actually works.
           </p>
 
 
