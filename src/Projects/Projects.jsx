@@ -140,8 +140,7 @@ const projects = [
       "Responsive",
     ],
 
-    github:
-      "https://github.com/saquisamekerub/kerub-portfolio",
+    github: "",
 
     live:
       "https://fairexgroup.com/",
@@ -467,20 +466,22 @@ function Projects() {
 
                   {/* GITHUB */}
 
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="project-link-button"
-                    title="View GitHub"
-                    aria-label={`View ${project.title} on GitHub`}
-                  >
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="project-link-button"
+                      title="View GitHub"
+                      aria-label={`View ${project.title} on GitHub`}
+                    >
 
-                    <FaGithub />
+                      <FaGithub />
 
-                    <span>GitHub</span>
+                      <span>GitHub</span>
 
-                  </a>
+                    </a>
+                  )}
 
 
                   {/* LIVE DEMO */}
