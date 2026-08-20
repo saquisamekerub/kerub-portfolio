@@ -507,18 +507,20 @@ function Projects() {
 
                   {/* GALLERY */}
 
-                  <button
-                    className="gallery-btn"
-                    onClick={() =>
-                      openGallery(project.id)
-                    }
-                    title="View Gallery"
-                    aria-label={`View ${project.title} gallery`}
-                  >
+                  {project.galleryImages && (
+                    <button
+                      className="gallery-btn"
+                      onClick={() =>
+                        openGallery(project.id)
+                      }
+                      title="View Gallery"
+                      aria-label={`View ${project.title} gallery`}
+                    >
 
-                    <FaImage />
+                      <FaImage />
 
-                  </button>
+                    </button>
+                  )}
 
                 </div>
 
