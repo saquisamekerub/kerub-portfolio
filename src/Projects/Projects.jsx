@@ -70,30 +70,28 @@ const projects = [
   },
 
   {
-    id: 3,
+    id: 5,
     featured: false,
 
-    title: "TRADING ASIA CORPORATION",
+    title: "PLANT CATEGORIZATION USING RANDOM FOREST",
 
-    category: "WORDPRESS WEBSITE  ",
+    category: "IEEE CONFERENCE PUBLICATION",
 
     description:
-      "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
+      "IEEE conference publication on implementing a Random Forest classifier for plant categorization in the Philippines' Bureau of Plant Industry.",
 
-    image: "/tradingasia.png",
+    image: "/random.jpg",
 
     technologies: [
-      "React",
-      "Vite",
-      "CSS",
-      "Responsive",
+      "Python",
+      "Machine Learning",
+      "Random Forest",
     ],
 
-    github:
-      "https://github.com/saquisamekerub/kerub-portfolio",
+    github: "",
 
     live:
-      "https://fairexgroup.com/",
+      "https://ieeexplore.ieee.org/document/11157022",
   },
 
   {
@@ -120,6 +118,33 @@ const projects = [
 
     live:
       "https://mmsm.ph/",
+  },
+
+  {
+    id: 3,
+    featured: false,
+
+    title: "TRADING ASIA CORPORATION",
+
+    category: "WORDPRESS WEBSITE  ",
+
+    description:
+      "Modern developer portfolio showcasing projects, internship experience, technical skills, and responsive UI built with React and Vite.",
+
+    image: "/tradingasia.png",
+
+    technologies: [
+      "React",
+      "Vite",
+      "CSS",
+      "Responsive",
+    ],
+
+    github:
+      "https://github.com/saquisamekerub/kerub-portfolio",
+
+    live:
+      "https://fairexgroup.com/",
   },
   
 ];
