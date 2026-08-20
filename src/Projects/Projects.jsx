@@ -20,8 +20,6 @@ const projects = [
     technologies: [
       "React",
       "Firebase",
-      "PHP",
-      "MySQL",
       "Google Vision API",
       "Regex",
       "Google Maps",
@@ -85,7 +83,9 @@ const projects = [
     technologies: [
       "Python",
       "Machine Learning",
-      "Random Forest",
+       "Kaggle",
+       "Jupyter Notebook",
+       "Microsoft Excel",
     ],
 
     github: "",
