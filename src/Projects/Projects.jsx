@@ -95,6 +95,32 @@ const projects = [
     live:
       "https://fairexgroup.com/",
   },
+
+  {
+    id: 4,
+    featured: false,
+
+    title: "",
+
+    category: "WEBSITE APPLICATION",
+
+    description:
+      "A responsive website for MMSM, presenting its services and online presence through a modern web experience.",
+
+    image: "/mmsm.png",
+
+    technologies: [
+      "WordPress",
+      "WPForms",
+      "LoginPress",
+
+    ],
+
+    github: "",
+
+    live:
+      "https://mmsm.ph/",
+  },
   
 ];
 
